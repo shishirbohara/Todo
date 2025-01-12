@@ -1,7 +1,8 @@
-import { DatabaseSync } from "node:sqlite";
-const db = new DatabaseSync(":memory:");
+import sqlite3 from "sqlite3";
+const { Database } = sqlite3;
+const db = new Database(":memory:");
 
-db.exec(`
+db.run(`
     CREATE TABLE users (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        username TEXT UNIQUE,
@@ -9,7 +10,7 @@ db.exec(`
     )
     `);
 
-db.exec(`
+db.run(`
     CREATE TABLE todos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
