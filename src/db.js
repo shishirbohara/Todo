@@ -1,8 +1,8 @@
-import sqlite3 from "sqlite3";
-const { Database } = sqlite3;
+import Database from "better-sqlite3";
+
 const db = new Database(":memory:");
 
-db.run(`
+db.exec(`
     CREATE TABLE users (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
        username TEXT UNIQUE,
@@ -10,7 +10,7 @@ db.run(`
     )
     `);
 
-db.run(`
+db.exec(`
     CREATE TABLE todos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
