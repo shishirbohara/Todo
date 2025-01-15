@@ -9,13 +9,12 @@ router.post("/register", (req, res) => {
   const { username, password } = req.body;
 
   const hashedPassword = bcrypt.hashSync(password, 10);
-
   try {
     const insertUser = db.prepare(`INSERT INTO users (username, password)
       VALUES (?, ?)`);
 
     const result = insertUser.run(username, hashedPassword);
-    const defaultTodo = `Hello, Add your first todo!`;
+    const defaultTodo = `hi add your todo!`;
     const insertTodo = db.prepare(`INSERT INTO todos (user_id, task)
         VALUES (?, ?)`);
     insertTodo.run(result.lastInsertRowid, defaultTodo);
@@ -39,7 +38,7 @@ router.post("/login", (req, res) => {
   try {
     const getUser = db.prepare("SELECT * FROM users WHERE username = ?");
     const user = getUser.get(username);
-    console.log(user);
+
     if (!user) {
       return res.status(404).json({ message: "user not found" });
     }
@@ -52,7 +51,6 @@ router.post("/login", (req, res) => {
     });
     res.json({ token });
   } catch (err) {
-    console.log(err.message);
     res.sendStatus(503);
   }
 });

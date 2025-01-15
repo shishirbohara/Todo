@@ -2,19 +2,45 @@
 GET http://localhost:5003
 
 ###
-POST http://localhost:5003/auth/register
+POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "username":"shishir",
-    "password":"shishir123"
+    "username":"shishirbohara@gmail.com",
+    "password":"shishir12345"
 }
 
 ###
-POST http://localhost:5003/auth/login
+POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "username":"shishir",
-    "password":"shishir123"
+    "username":"shishirbohara@gmail.com",
+    "password":"shishir12345"
 }
+
+### 
+GET http://localhost:8000/todos
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM2OTU0OTk3LCJleHAiOjE3MzcwNDEzOTd9.z6DeWqpHxVFQCj6I5V6N20aNwC4mrYat__2UJ6__rAo
+
+###
+POST  http://localhost:8000/todos
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM2OTU0OTk3LCJleHAiOjE3MzcwNDEzOTd9.z6DeWqpHxVFQCj6I5V6N20aNwC4mrYat__2UJ6__rAo
+Content-Type: application/json
+
+{
+    "task":"Create a new backend project"
+}
+
+###
+PUT http://localhost:8000/todos/3
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM2OTU0OTk3LCJleHAiOjE3MzcwNDEzOTd9.z6DeWqpHxVFQCj6I5V6N20aNwC4mrYat__2UJ6__rAo
+{
+    "completed": 2
+    
+}
+
+###
+DELETE http://localhost:8000/todos/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzM2OTU0OTk3LCJleHAiOjE3MzcwNDEzOTd9.z6DeWqpHxVFQCj6I5V6N20aNwC4mrYat__2UJ6__rAo
